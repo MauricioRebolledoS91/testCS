@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using PruebaIngresoBibliotecario.Api.Domain;
 using System.Threading.Tasks;
 
 namespace PruebaIngresoBibliotecario.Infrastructure
@@ -18,6 +19,8 @@ namespace PruebaIngresoBibliotecario.Infrastructure
         {
             await SaveChangesAsync().ConfigureAwait(false);
         }
+
+        public DbSet<Prestamo> Prestamos { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

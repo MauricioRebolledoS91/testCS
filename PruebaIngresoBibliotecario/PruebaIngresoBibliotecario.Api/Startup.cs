@@ -6,8 +6,8 @@ using Microsoft.Extensions.Hosting;
 using System;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
-
-
+using PruebaIngresoBibliotecario.Api.Data;
+using PruebaIngresoBibliotecario.Api.Services;
 
 namespace PruebaIngresoBibliotecario.Api
 {
@@ -25,6 +25,10 @@ namespace PruebaIngresoBibliotecario.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddTransient<IPrestamoRepositorio, PrestamoRepositorio>();
+            services.AddTransient<IPrestamoServicio, PrestamoServicio>();
+
 
             services.AddSwaggerDocument();
 
