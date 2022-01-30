@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<assemblies timestamp="01/30/2022 17:02:52">
+  <assembly name="/projects/challenge/PruebaIngresoBibliotecario/PruebaIngresoBibliotecario.Api.Tests/bin/Debug/netcoreapp3.0/PruebaIngresoBibliotecario.Api.Tests.dll" run-date="2022-01-30" run-time="17:02:52" total="8" passed="7" failed="1" skipped="0" time="1.459" errors="0">
+    <errors />
+    <collection total="8" passed="7" failed="1" skipped="0" name="Test collection for Api.Test.PrestamoControllerTest" time="1.459">
+      <test name="Api.Test.PrestamoControllerTest.PostPrestamoAfiliadoIsbnError" type="Api.Test.PrestamoControllerTest" method="PostPrestamoAfiliadoIsbnError" time="0.6320973" result="Fail">
+        <failure>
+          <message>Expected object to be BadRequest, but found InternalServerError.</message>
+          <stack-trace>   at FluentAssertions.Execution.XUnit2TestFramework.Throw(String message)
+   at FluentAssertions.Execution.TestFrameworkProvider.Throw(String message)
+   at FluentAssertions.Execution.DefaultAssertionStrategy.HandleFailure(String message)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(Func`1 failReasonFunc)
+   at FluentAssertions.Execution.AssertionScope.FailWith(String message, Object[] args)
+   at FluentAssertions.Primitives.ObjectAssertions.Be(Object expected, String because, Object[] becauseArgs)
+   at Api.Test.PrestamoControllerTest.PostPrestamoAfiliadoIsbnError() in /projects/challenge/PruebaIngresoBibliotecario/PruebaIngresoBibliotecario.Api.Tests/PrestamoControllerTest.cs:line 177</stack-trace>
+        </failure>
+        <traits />
+      </test>
+      <test name="Api.Test.PrestamoControllerTest.PostPrestamoAfiliadoFechaEntregaExito" type="Api.Test.PrestamoControllerTest" method="PostPrestamoAfiliadoFechaEntregaExito" time="0.5828650" result="Pass">
+        <traits />
+      </test>
+      <test name="Api.Test.PrestamoControllerTest.PostPrestamoError" type="Api.Test.PrestamoControllerTest" method="PostPrestamoError" time="0.0701058" result="Pass">
+        <traits />
+      </test>
+      <test name="Api.Test.PrestamoControllerTest.PostPrestamoAfiliadoTipoUsuarioError" type="Api.Test.PrestamoControllerTest" method="PostPrestamoAfiliadoTipoUsuarioError" time="0.0289478" result="Pass">
+        <traits />
+      </test>
+      <test name="Api.Test.PrestamoControllerTest.PostPrestamoEmpleadoFechaEntregaExito" type="Api.Test.PrestamoControllerTest" method="PostPrestamoEmpleadoFechaEntregaExito" time="0.0253417" result="Pass">
+        <traits />
+      </test>
+      <test name="Api.Test.PrestamoControllerTest.PostPrestamoInvitadoFechaEntregaExito" type="Api.Test.PrestamoControllerTest" method="PostPrestamoInvitadoFechaEntregaExito" time="0.0287101" result="Pass">
+        <traits />
+      </test>
+      <test name="Api.Test.PrestamoControllerTest.GetPrestamoExito" type="Api.Test.PrestamoControllerTest" method="GetPrestamoExito" time="0.0654608" result="Pass">
+        <traits />
+      </test>
+      <test name="Api.Test.PrestamoControllerTest.GetPrestamoError" type="Api.Test.PrestamoControllerTest" method="GetPrestamoError" time="0.0256345" result="Pass">
+        <traits />
+      </test>
+    </collection>
+  </assembly>
+</assemblies>
