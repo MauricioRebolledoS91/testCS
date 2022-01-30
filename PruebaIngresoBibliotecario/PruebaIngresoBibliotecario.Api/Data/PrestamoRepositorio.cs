@@ -15,19 +15,21 @@ namespace PruebaIngresoBibliotecario.Api.Data
             _context = context;
         }
 
-        public async Task GuardarPrestamo(Prestamo prestamo)
+        public async Task<Prestamo> GuardarPrestamo(Prestamo prestamo)
         {
              _context.Prestamos.Add(prestamo);
             await _context.SaveChangesAsync();
+            return await _context.Set<Prestamo>().FindAsync(prestamo.Id);
         }
 
         public bool VerificarSiExisteUsusarioPorId(Prestamo prestamo)
         {
 
-            var queryLondonCustomers = from cust in _context.Prestamos
-                                       where cust.IdentificacionUsuario == prestamo.IdentificacionUsuario
-                                       select cust;
-            if (queryLondonCustomers.ToList().Count > 0)
+            var usuarioConPrestamo = from prest in _context.Prestamos
+                                       where prest.IdentificacionUsuario == prestamo.IdentificacionUsuario
+                                       select prest;
+
+            if (usuarioConPrestamo.ToList().Count > 0)
             {
                 return true;
             }
@@ -38,6 +40,9 @@ namespace PruebaIngresoBibliotecario.Api.Data
             
         }
 
-
+        public async Task<Prestamo> ObtenerPrestamoPorId(string id)
+        {
+            return await _context.Set<Prestamo>().FindAsync(id);
+        }
     }
 }

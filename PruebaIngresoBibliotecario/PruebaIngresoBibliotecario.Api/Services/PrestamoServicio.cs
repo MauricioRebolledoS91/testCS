@@ -18,21 +18,23 @@ namespace PruebaIngresoBibliotecario.Api.Services
 
         public async Task<RespuestaDTO> CrearPrestamo(Prestamo prestamo)
         {
-            RespuestaDTO fechaDevolucion = new RespuestaDTO();
+            RespuestaDTO respuesta = new RespuestaDTO();
             var existeUsuarioConPrestamo = _prestamoRepositorio.VerificarSiExisteUsusarioPorId(prestamo);
             if(!existeUsuarioConPrestamo)
             {
-                
-                fechaDevolucion.FechaMaximaDevolucion = CalcularFechaEntrega(prestamo.TipoUsuario);
+                prestamo.Id = Guid.NewGuid().ToString();
+                prestamo.FechaMaximaDevolucion = CalcularFechaEntrega(prestamo.TipoUsuario);
 
-                await _prestamoRepositorio.GuardarPrestamo(prestamo);
+                var prestamoCreado = await _prestamoRepositorio.GuardarPrestamo(prestamo);
+                respuesta.Id = prestamoCreado.Id;
+                respuesta.FechaMaximaDevolucion = prestamo.FechaMaximaDevolucion;
             }
             else
             {
-                fechaDevolucion.Mensaje = $"El usuario con identificacion {prestamo.IdentificacionUsuario} ya tiene un libro prestado por lo cual no se le puede realizar otro prestamo";
+                respuesta.Mensaje = $"El usuario con identificacion {prestamo.IdentificacionUsuario} ya tiene un libro prestado por lo cual no se le puede realizar otro prestamo";
             }
 
-            return fechaDevolucion;
+            return respuesta;
 
         }
 
@@ -57,5 +59,24 @@ namespace PruebaIngresoBibliotecario.Api.Services
             return fechaDevolucion;
         }
 
+        public async Task<RespuestaDTO> ObtenerPrestamoPorId(string prestamoId)
+        {
+            var respuestaDto = new RespuestaDTO();
+            try
+            {
+                var prestamo = await _prestamoRepositorio.ObtenerPrestamoPorId(prestamoId);
+
+                respuestaDto.Id = prestamo.Id;
+                respuestaDto.IdentificacionUsuario = prestamo.IdentificacionUsuario;
+                respuestaDto.Isbn = prestamo.Isbn;
+                respuestaDto.FechaMaximaDevolucion = prestamo.FechaMaximaDevolucion;
+            
+            }
+            catch(Exception)
+            {
+                respuestaDto = null;
+            }
+            return respuestaDto;
+        }
     }
 }

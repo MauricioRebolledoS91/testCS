@@ -10,6 +10,6 @@ namespace PruebaIngresoBibliotecario.Api.Services
     public interface IPrestamoServicio
     {
         Task<RespuestaDTO> CrearPrestamo(Prestamo prestamo);
-        //Task<RespuestaDTO> ObtenerUsuario(Prestamo prestamo);
+        Task<RespuestaDTO> ObtenerPrestamoPorId(string prestamoId);
     }
 }

@@ -8,8 +8,10 @@ namespace PruebaIngresoBibliotecario.Api.Data
 {
     public interface IPrestamoRepositorio
     {
-        Task GuardarPrestamo(Prestamo prestamo);
+        Task<Prestamo> GuardarPrestamo(Prestamo prestamo);
 
         bool VerificarSiExisteUsusarioPorId(Prestamo prestamo);
+
+        Task<Prestamo> ObtenerPrestamoPorId(string id);
     }
 }
