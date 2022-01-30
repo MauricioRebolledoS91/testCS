@@ -74,7 +74,7 @@ namespace PruebaIngresoBibliotecario.Api.Services
             }
             catch(Exception)
             {
-                respuestaDto = null;
+                respuestaDto.Mensaje = $"El prestamo con id {prestamoId} no existe";
             }
             return respuestaDto;
         }

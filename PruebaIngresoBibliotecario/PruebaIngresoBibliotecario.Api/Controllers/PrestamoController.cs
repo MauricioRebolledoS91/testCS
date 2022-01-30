@@ -31,9 +31,9 @@ namespace PruebaIngresoBibliotecario.Api.Controllers
         {
             var respuesta = new RespuestaDTO();
             respuesta = await _prestamoServicio.ObtenerPrestamoPorId(idPrestamo);
-            if (respuesta == null)
+            if (respuesta.Id == null)
             {
-                return NotFound();
+                return NotFound(respuesta);
             }
             return Ok(respuesta);
         }
