@@ -3,6 +3,7 @@ using PruebaIngresoBibliotecario.Api.Domain;
 using PruebaIngresoBibliotecario.Api.Services;
 using System.Threading.Tasks;
 using System.Text.Json;
+using PruebaIngresoBibliotecario.Api.Dto;
 
 namespace PruebaIngresoBibliotecario.Api.Controllers
 {

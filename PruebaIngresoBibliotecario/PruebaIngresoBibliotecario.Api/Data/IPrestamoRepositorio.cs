@@ -10,6 +10,6 @@ namespace PruebaIngresoBibliotecario.Api.Data
     {
         Task GuardarPrestamo(Prestamo prestamo);
 
-        //Task<ApiResponse> ObtenerPres();
+        bool VerificarSiExisteUsusarioPorId(Prestamo prestamo);
     }
 }

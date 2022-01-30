@@ -1,5 +1,6 @@
 ﻿using PruebaIngresoBibliotecario.Api.Data;
 using PruebaIngresoBibliotecario.Api.Domain;
+using PruebaIngresoBibliotecario.Api.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,11 +19,21 @@ namespace PruebaIngresoBibliotecario.Api.Services
         public async Task<RespuestaDTO> CrearPrestamo(Prestamo prestamo)
         {
             RespuestaDTO fechaDevolucion = new RespuestaDTO();
-            fechaDevolucion.FechaMaximaDevolucion = CalcularFechaEntrega(prestamo.TipoUsuario);
+            var existeUsuarioConPrestamo = _prestamoRepositorio.VerificarSiExisteUsusarioPorId(prestamo);
+            if(!existeUsuarioConPrestamo)
+            {
+                
+                fechaDevolucion.FechaMaximaDevolucion = CalcularFechaEntrega(prestamo.TipoUsuario);
 
-            await _prestamoRepositorio.GuardarPrestamo(prestamo);
+                await _prestamoRepositorio.GuardarPrestamo(prestamo);
+            }
+            else
+            {
+                fechaDevolucion.Mensaje = $"El usuario con identificacion {prestamo.IdentificacionUsuario} ya tiene un libro prestado por lo cual no se le puede realizar otro prestamo";
+            }
 
-            return  fechaDevolucion;
+            return fechaDevolucion;
+
         }
 
         public DateTime CalcularFechaEntrega(TipoUsuarioPrestamo tipoUsuario)

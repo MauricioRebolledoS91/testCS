@@ -17,7 +17,25 @@ namespace PruebaIngresoBibliotecario.Api.Data
 
         public async Task GuardarPrestamo(Prestamo prestamo)
         {
-            await _context.AddAsync(prestamo);
+             _context.Prestamos.Add(prestamo);
+            await _context.SaveChangesAsync();
+        }
+
+        public bool VerificarSiExisteUsusarioPorId(Prestamo prestamo)
+        {
+
+            var queryLondonCustomers = from cust in _context.Prestamos
+                                       where cust.IdentificacionUsuario == prestamo.IdentificacionUsuario
+                                       select cust;
+            if (queryLondonCustomers.ToList().Count > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
 
 
